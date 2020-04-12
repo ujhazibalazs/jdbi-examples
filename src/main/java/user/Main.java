@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public class Main implements UserDao {
+public class Main {
     public static void main(String[] args) {
         Jdbi jdbi = Jdbi.create("jdbc:h2:mem:test");
         jdbi.installPlugin(new SqlObjectPlugin());
@@ -49,40 +49,5 @@ public class Main implements UserDao {
             dao.list().stream().forEach(System.out::println);
             List<User> list = dao.list();
             System.out.println( list.get(0).getId() + " " + list.get(0).getUsername() + " " + list.get(0).getPassword() + " " + list.get(0).getEmail() + " " + list.get(0).getGender() + " " + list.get(0).getDob().toString());        }
-    }
-
-    @Override
-    public void createTable() {
-
-    }
-
-    @Override
-    public Long insert(Long id, String username, String password, String name, String email, User.Gender gender, LocalDate dob, boolean enabled) {
-        return id;
-    }
-
-    @Override
-    public Long insert(User user) {
-        return user.getId();
-    }
-
-    @Override
-    public Optional<User> findById(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return Optional.empty();
-    }
-
-    @Override
-    public void delete(User user) {
-
-    }
-
-    @Override
-    public List<User> list() {
-        return null;
     }
 }
